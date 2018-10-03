@@ -7,6 +7,12 @@ class PostsController < ApplicationController
     @post = Post.find_by(id:params[:id])
     
   end
+  
+  
+  def new
+   redirect_to("posts/index")
+  
+  end
 
 end
  
