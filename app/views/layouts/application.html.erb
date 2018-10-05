@@ -23,15 +23,19 @@
         <li>
           <%= link_to("新規投稿", "/posts/new") %>
         </li>
+        <!-- ユーザー一覧ページへのリンクを作成してください -->
+        <li>
+          <%= link_to("ユーザー一覧", "/users/index") %>
+        </li>
       </ul>
     </header>
-    <!-- 指定されたHTMLを貼り付けてください -->
-    <!-- flash[:notice]に代入されたメッセージを表示してください -->
+
     <% if flash[:notice] %>
       <div class="flash">
-        <%= flash[:notice]%>
+        <%= flash[:notice] %>
       </div>
     <% end %>
+    
     <%= yield %>
   </body>
 </html>
