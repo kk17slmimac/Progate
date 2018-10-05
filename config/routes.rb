@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  get 'users/index'
+  get "users/index" => "users#index"
+  # showアクションへのルーティングを追加してください
+  get "users/:id" => "users#show"
+
   get "posts/index" => "posts#index"
   get "posts/new" => "posts#new"
   get "posts/:id" => "posts#show"
