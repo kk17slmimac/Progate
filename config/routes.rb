@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-  # updateアクションへのルーティングを設定してください
+  # ルーティングを追加してください
+  get "login" => "users#login_form"
+
   post "users/:id/update" => "users#update"
-  
   get "users/:id/edit" => "users#edit"
   post "users/create" => "users#create"
   get "signup" => "users#new"

@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  
   def index
     @posts = Post.all.order(created_at: :desc)
   end
@@ -14,12 +15,10 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(content: params[:content])
     if @post.save
-      # 変数flash[:notice]に、指定されたメッセージを代入してください
       flash[:notice] = "投稿を作成しました"
-      
       redirect_to("/posts/index")
     else
-      render("/posts/new")
+      render("posts/new")
     end
   end
   
@@ -34,16 +33,14 @@ class PostsController < ApplicationController
       flash[:notice] = "投稿を編集しました"
       redirect_to("/posts/index")
     else
-      render("/posts/edit")
+      render("posts/edit")
     end
   end
   
   def destroy
     @post = Post.find_by(id: params[:id])
     @post.destroy
-    # 変数flash[:notice]に、指定されたメッセージを代入してください
     flash[:notice] = "投稿を削除しました"
-    
     redirect_to("/posts/index")
   end
   
