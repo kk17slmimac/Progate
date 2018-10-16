@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   post "likes/:post_id/create" => "likes#create"
-  # destroyアクションに対応するルーティングを追加してください
   post "likes/:post_id/destroy" => "likes#destroy"
 
   post "users/:id/update" => "users#update"
@@ -12,6 +11,8 @@ Rails.application.routes.draw do
   post "login" => "users#login"
   post "logout" => "users#logout"
   get "login" => "users#login_form"
+  # "users/:id/likes"に対応するルーティングを追加してください
+  get "users/:id/likes" => "users#likes"
 
   get "posts/index" => "posts#index"
   get "posts/new" => "posts#new"
