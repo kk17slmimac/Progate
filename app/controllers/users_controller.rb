@@ -58,11 +58,16 @@ class UsersController < ApplicationController
   end
   
   def login
-    @user = User.find_by(email: params[:email], password: params[:password])
+    # メールアドレスのみを用いて、ユーザーを取得するように書き換えてください
+    @user = User.find_by(email: params[:email])
+    if @user && @user.authenticate(params[:password])
+    # if文の条件を&&とauthenticateメソッドを用いて書き換えてください
+    
     if @user
       session[:user_id] = @user.id
       flash[:notice] = "ログインしました"
       redirect_to("/posts/index")
+    end
     else
       @error_message = "メールアドレスまたはパスワードが間違っています"
       @email = params[:email]
@@ -78,10 +83,7 @@ class UsersController < ApplicationController
   end
   
   def likes
-    # 変数@userを定義してください
     @user = User.find_by(id: params[:id])
-    
-    # 変数@likesを定義してください
     @likes = Like.where(user_id: @user.id)
   end
   
